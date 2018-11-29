@@ -1,0 +1,27 @@
+<!DOCTYPE html> <!--WORKS ALL THE WAY-->
+<html>
+    <head>
+        <title>Shop Admin</title>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        <script src="javascripts/app.js"></script>
+        <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+    </head>
+    <header>Store Management Interface</header><br>
+    <body ng-app="shop" ng-controller="MainCtrl">
+        <div style="margin-left: 5em;">
+        <form ng-submit="addProduct()">
+            Product Name: <input type="text" ng-model="nameContent"><br><br>
+            Price: <input type="text" ng-model="priceContent"><br><br>
+            Picture URL: <input type="text" ng-model="imageContent">
+            <button type="submit">Add Product</button>
+        </form>
+        
+        <h1>Current Products</h1>
+        <div ng-repeat="item in items | orderBy: 'Name'">
+            <span class="glyphicon glyphicon-remove" ng-click="delete(item)"></span>
+            {{item.Name}} - price {{item.Price}} - ordered {{item.orders}} <br> <img ng-src="{{item.Image}}">
+        </div>
+    </body>
+</html>
